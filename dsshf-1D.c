@@ -10,7 +10,7 @@ unsigned int getSeedValue(char *key, int l, unsigned int seed)
 {
 	int i;
 	for (i = 0; i < 32; i++)
-		seed = (unsigned int)murmur2(key, l, seed);
+		seed = (unsigned int)murmur3(key, l, seed);
 	return seed;
 }
 
@@ -29,11 +29,11 @@ void genHash(char *key, unsigned int seed, int bit_size, char *hash_value)
 
 	for (i = 0; i < bit_size; i++)
 	{
-		seed = murmur2(key, l, seed); // hash function calls for bit value.
+		seed = murmur3(key, l, seed); // hash function calls for bit value.
 		pos = seed % 31;
 		bit = (seed & (1 << pos)) >> pos;
 		hash_bits[i] = bit;
-		seed = murmur2(key, l, seed); // hash function calls for seed value.
+		seed = murmur3(key, l, seed); // hash function calls for seed value.
 	}
 	conIntoHex(hash_bits, bit_size, hash_value);
 }
