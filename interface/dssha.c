@@ -7,11 +7,11 @@
 #include "../hexa.h"
 #include "../prime.h"
 
-#include "dsshf-1D.h"
-#include "dsshf-2D.h"
-#include "dsshf-3D.h"
+#include "DSSHA-1D.h"
+#include "DSSHA-2D.h"
+#include "DSSHA-3D.h"
 
-#define DEFAULT_KEY "DSSHF"
+#define DEFAULT_KEY "DSSHA"
 #define DEFAULT_SEED 198899
 #define DEFAULT_BIT_SIZE 512
 
@@ -60,16 +60,16 @@ int main()
   int choice;
 
   // welcome message
-  printf("\n######\nDSSHF: Dynamic-Sized Secure Hash Function\n######\n");
+  printf("\n######\nDSSHA: Dynamic-Sized Secure Hash Algorithm\n######\n");
 
   // Get user inputs
   getUserInput(key, &seed, &bit_size);
 
   // Choose hashing function
-  printf("\nChoose the hashing function:\n");
-  printf("1. DSSHF-1D\n");
-  printf("2. DSSHF-2D\n");
-  printf("3. DSSHF-3D\n");
+  printf("\nChoose the hashing algorithm:\n");
+  printf("1. DSSHA-1D\n");
+  printf("2. DSSHA-2D\n");
+  printf("3. DSSHA-3D\n");
   printf("Enter your choice (1, 2, or 3): ");
   scanf("%d", &choice);
 
@@ -79,26 +79,34 @@ int main()
     printf("Memory allocation failed!\n");
     return 1;
   }
-
+  clock_t start = clock();
+  clock_t end = clock();
   switch (choice)
   {
   case 1:
     genHash1d(key, seed, bit_size, hash_value);
+    end = clock();
     break;
   case 2:
     genHash2d(key, seed, bit_size, hash_value);
+    end = clock();
     break;
   case 3:
     genHash3d(key, seed, bit_size, hash_value);
+    end = clock();
     break;
   default:
     printf("Invalid choice! Please restart the program.\n");
     free(hash_value);
     return 1;
   }
+  
+  double time_taken = ((double)(end - start) * 1000 / CLOCKS_PER_SEC);
 
-  // Display the hash value
+  // Display the hash value and time taken
   printf("\nThe generated hash value is:\n%s\n", hash_value);
+  // double time_taken = ((double)(clock() - start) * 1000 / CLOCKS_PER_SEC);
+  printf("\nTime taken by the algorithm: %.3f ms\n", time_taken);
 
   // Clean up and exit
   free(hash_value);
