@@ -17,7 +17,7 @@ unsigned int getSeedValue(char *key, int l, unsigned int seed)
 {
 	int i;
 	for (i = 0; i < 32; i++)
-		seed = (unsigned int)murmur2(key, l, seed);
+		seed = (unsigned int)murmur3(key, l, seed);
 	return seed;
 }
 
@@ -36,7 +36,7 @@ void genHash(char *key, unsigned int seed, int bit_size, char *hash_value)
 	r = getDim(seed);
 	while (1)
 	{
-		seed = (unsigned int)murmur2(key, l, seed);
+		seed = (unsigned int)murmur3(key, l, seed);
 		c = getDim(seed);
 		if (r != c)
 			break;
@@ -66,11 +66,11 @@ void genHash(char *key, unsigned int seed, int bit_size, char *hash_value)
 	{
 		for (j = 0; j < Y; j++)
 		{
-			seed = (unsigned int)murmur2(key, l, seed); // hash function calls for bit value.
+			seed = (unsigned int)murmur3(key, l, seed); // hash function calls for bit value.
 			pos = seed % 31;
 			bit = (seed & (1 << pos)) >> pos;
 			vector[i][j] = bit;
-			seed = (unsigned int)murmur2(key, l, seed); // hash function calls for seed value.
+			seed = (unsigned int)murmur3(key, l, seed); // hash function calls for seed value.
 		}
 	}
 
