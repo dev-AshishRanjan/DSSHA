@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "hexa.h": "c",
+    "*.gitignore": "c",
+    "constants.h": "c"
+  }
+}

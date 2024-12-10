@@ -20,11 +20,32 @@ It is more secure than DSSHF-1D and DSSHF-2D.
 
 ## Compilation
 
-To compile DSSHF-1D, `gcc DSSHF-1D.c -o DSSHF1D` and run it as `./DSSHF1D`
+To compile DSSHF-1D, `gcc dsshf-1D.c -o DSSHF1D` and run it as `./DSSHF1D`
 
-To compile DSSHF-2D, `gcc DSSHF-2D.c -DSSHF2D -lm` and run it as `./DSSHF2D`
+To compile DSSHF-2D, `gcc dsshf-2D.c -o DSSHF2D -lm` and run it as `./DSSHF2D`
 
-To compile DSSHF-2D, `gcc DSSHF-3D.c -DSSHF2D -lm` and run it as `./DSSHF3D`
+To compile DSSHF-2D, `gcc dsshf-3D.c -o DSSHF3D -lm` and run it as `./DSSHF3D`
+
+To compile DSSHF(Interactive Menu), `gcc ./interface/dsshf.c -o DSSHF -lm` and run it as `./DSSHF`
+
+
+## Murmur2 vs Murmur3
+Here are the key differences between **MurmurHash2** and **MurmurHash3**:
+
+| **Aspect**            | **MurmurHash2**                                | **MurmurHash3**                                |
+|-----------------------|-----------------------------------------------|-----------------------------------------------|
+| **Release Year**      | Older version, introduced earlier.            | Modernized version, introduced later.         |
+| **Output Size**       | Fixed 32-bit or 64-bit.                       | Supports 32-bit, 128-bit, and variable-sized outputs. |
+| **Performance**       | Faster but less secure for modern use cases.  | Slower but provides better mixing and security. |
+| **Mixing Quality**    | Weaker mixing, prone to some hash collisions. | Improved mixing, better avalanche behavior.   |
+| **Security**          | Vulnerable to some hash collision attacks.    | More resilient against collision attacks.     |
+| **Finalization**      | Simplistic, less thorough.                    | More thorough and complex finalization.       |
+| **Use Case**          | Suitable for basic hashing and older systems. | Preferred for cryptographic or modern systems needing robust hashing. |
+
+In short:  
+- Use **MurmurHash2** for speed and simplicity in non-critical tasks.  
+- Use **MurmurHash3** for better distribution, security, and variable-sized output.
+
 
 ## Citation
 
