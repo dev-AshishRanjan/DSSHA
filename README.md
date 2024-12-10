@@ -51,7 +51,7 @@ In short:
 
 ```
 @misc{github:2024/DSSHF,
-      author = {Kumar Ashish Ranjan and Jugya Kamal Gogoi and Tolemy Kashyap},
+      author = {Ripon Patgiri and Kumar Ashish Ranjan and Jugya Kamal Gogoi and Tolemy Kashyap},
       title = {DSSHF: Dynamic-Sized Secure Hash Function},
       howpublished = {Github, FYP NIT Silchar:2024/27},
       wherepublished = {GitHub},
