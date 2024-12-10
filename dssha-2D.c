@@ -87,7 +87,7 @@ void genHash(char *key, unsigned int seed, int bit_size, char *hash_value)
 
 int main()
 {
-	char key[1024] = "DSSHF";
+	char key[1024] = "DSSHA";
 	unsigned int seed = 198899;
 	int bit_size = 512;
 	char *hash_value = (char *)malloc((bit_size / 4 + 2) * sizeof(char) + 1);
